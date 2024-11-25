@@ -6,59 +6,201 @@
     <title>ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* Background: Black with animated glowing lines and dots */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-            background: url('https://www.transparenttextures.com/patterns/wood-pattern.png'), linear-gradient(45deg, rgba(255, 0, 0, 0.7), rgba(255, 255, 255, 0.5)) fixed;
-            color: #fff; line-height: 1.6; height: 100vh; overflow: hidden;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #000; /* Black background */
+            position: relative;
         }
+
+        /* Create a network of dots and lines in the background */
+        .network {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .network .dot {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: dotAnimation 10s infinite;
+        }
+
+        .network .line {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            transform-origin: center center;
+            animation: lineAnimation 10s infinite;
+        }
+
+        /* Animation for dots to randomly appear */
+        @keyframes dotAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* Animation for lines: lines grow and shrink */
+        @keyframes lineAnimation {
+            0% {
+                width: 1px;
+                height: 1px;
+                opacity: 0.2;
+            }
+            50% {
+                width: 150px;
+                height: 1px;
+                opacity: 0.8;
+            }
+            100% {
+                width: 1px;
+                height: 1px;
+                opacity: 0.2;
+            }
+        }
+
+        /* Container styles */
         .container {
-            max-width: 1200px; margin: 50px auto; padding: 20px; text-align: center;
-            background: rgba(0, 0, 0, 0.8); border-radius: 12px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-            animation: fadeIn 1s;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 10;
         }
+
         h1, h2, p {
-            color: #fff; text-transform: uppercase; text-shadow: 0 0 10px #ff0000;
-            font-size: 2.5em; margin-bottom: 20px; font-weight: bold;
+            text-transform: uppercase;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 0 10px #ff0000;
             animation: textGlow 1.5s ease-in-out infinite alternate;
         }
-        .intro-text { font-size: 1.2em; font-weight: normal; text-shadow: 0 0 10px white, 0 0 20px white; }
+
+        .intro-text {
+            font-size: 1.2em;
+            font-weight: normal;
+            text-shadow: 0 0 10px white, 0 0 20px white;
+        }
+
         .profile-img {
-            width: 150px; height: 150px; border-radius: 50%; border: 3px solid #ff0000;
-            margin-bottom: 20px; transition: transform 0.3s ease-in-out;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 3px solid #ff0000;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
         }
-        .profile-img:hover { transform: scale(1.1); border-color: #fff; }
-        .inline-details { display: flex; justify-content: center; gap: 30px; font-size: 1.2em; }
-        .section ul { list-style: none; padding: 0; }
+
+        .profile-img:hover {
+            transform: scale(1.1);
+            border-color: #fff;
+        }
+
+        .inline-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-size: 1.2em;
+        }
+
+        .section ul {
+            list-style: none;
+            padding: 0;
+        }
+
         .section ul li {
-            background: rgba(255, 255, 255, 0.1); padding: 10px; margin-bottom: 15px;
-            border-radius: 6px; font-size: 1.1em; text-transform: uppercase;
-            text-shadow: 0 0 10px white, 0 0 20px #ff0000; animation: textGlow 1s ease-in-out infinite alternate;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px white, 0 0 20px #ff0000;
+            animation: textGlow 1s ease-in-out infinite alternate;
         }
-        a { color: #fff; text-decoration: none; transition: color 0.3s; }
-        a:hover { color: #ff0000; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        a {
+            color: #ff5733;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ff0000;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
         @keyframes textGlow {
-            0%, 100% { text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; }
-            50% { text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; }
+            0%, 100% {
+                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+            }
+            50% {
+                text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
+            }
         }
-        @keyframes sakura { 0% { transform: translateY(-100vh) rotate(0); } 100% { transform: translateY(100vh) rotate(360deg); } }
-        .sakura {
-            position: absolute; top: -10%; width: 20px; height: 20px; background: rgba(255, 255, 255, 0.8); border-radius: 50%;
-            animation: sakura 8s linear infinite; opacity: 0.5; animation-delay: calc(-8s * random());
-        }
+
         @media (max-width: 768px) {
-            .container { padding: 15px; }
-            .inline-details { flex-direction: column; align-items: center; gap: 20px; }
-            h1, h2 { font-size: 2em; }
-            .intro-text { font-size: 1em; }
+            .container {
+                padding: 15px;
+            }
+
+            .inline-details {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            h1, h2 {
+                font-size: 2em;
+            }
+
+            .intro-text {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Sakura Petals -->
-    <div class="sakura"></div><div class="sakura" style="animation-delay: -2s;"></div><div class="sakura" style="animation-delay: -4s;"></div>
-    
+    <!-- Network of dots and lines -->
+    <div class="network"></div>
+
     <div class="container">
         <h1>ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ</h1>
         <img class="profile-img" src="https://i.ibb.co/wJvHNDK/file-3042.jpg" alt="Profile">
@@ -89,6 +231,57 @@
             </ul>
         </div>
     </div>
+
+    <script>
+        // Add random dots and lines to the background dynamically
+        const network = document.querySelector('.network');
+        const numDots = 30; // Number of dots to generate
+
+        function randomPosition() {
+            return Math.random() * 100 + '%';
+        }
+
+        // Create dots and append them
+        for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.style.top = randomPosition();
+            dot.style.left = randomPosition();
+            network.appendChild(dot);
+        }
+
+        // Create lines between dots
+        const dots = document.querySelectorAll('.network .dot');
+        dots.forEach((dot1, index1) => {
+            dots.forEach((dot2, index2) => {
+                if (index1 !== index2) {
+                    const line = document.createElement('div');
+                    line.classList.add('line');
+                    network.appendChild(line);
+                    connectDots(dot1, dot2, line);
+                }
+            });
+        });
+
+        function connectDots(dot1, dot2, line) {
+            const rect1 = dot1.getBoundingClientRect();
+            const rect2 = dot2.getBoundingClientRect();
+            const x1 = rect1.left + rect1.width / 2;
+            const y1 = rect1.top + rect1.height / 2;
+            const x2 = rect2.left + rect2.width / 2;
+            const y2 = rect2.top + rect2.height / 2;
+
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+            line.style.width = distance + 'px';
+            line.style.transform = `rotate(${angle}deg)`;
+            line.style.left = x1 + 'px';
+            line.style.top = y1 + 'px';
+        }
+    </script>
 
 </body>
 </html>
