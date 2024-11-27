@@ -7,17 +7,21 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* Background: Black with animated glowing lines and dots */
+        /* Global Styles */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+            background-color: #000;
             color: #fff;
             height: 100vh;
             overflow: hidden;
-            background-color: #000; /* Black background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: relative;
+            animation: backgroundGlow 10s infinite alternate;
         }
 
-        /* Create a network of dots and lines in the background */
+        /* Animated Network Background */
         .network {
             position: absolute;
             top: 0;
@@ -32,9 +36,9 @@
             position: absolute;
             width: 6px;
             height: 6px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
-            animation: dotAnimation 10s infinite;
+            animation: dotAnimation 6s infinite;
         }
 
         .network .line {
@@ -42,13 +46,12 @@
             width: 1px;
             height: 1px;
             background-color: rgba(255, 255, 255, 0.5);
-            transform-origin: center center;
-            animation: lineAnimation 10s infinite;
+            animation: lineAnimation 6s infinite;
         }
 
-        /* Animation for dots to randomly appear */
+        /* Dot Animation */
         @keyframes dotAnimation {
-            0% {
+            0%, 100% {
                 transform: scale(0);
                 opacity: 0;
             }
@@ -56,15 +59,11 @@
                 transform: scale(1);
                 opacity: 1;
             }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
         }
 
-        /* Animation for lines: lines grow and shrink */
+        /* Line Animation */
         @keyframes lineAnimation {
-            0% {
+            0%, 100% {
                 width: 1px;
                 height: 1px;
                 opacity: 0.2;
@@ -72,51 +71,50 @@
             50% {
                 width: 150px;
                 height: 1px;
-                opacity: 0.8;
-            }
-            100% {
-                width: 1px;
-                height: 1px;
-                opacity: 0.2;
+                opacity: 0.6;
             }
         }
 
-        /* Container styles */
+        /* Main Container */
         .container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 30px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
-            animation: fadeIn 1s ease-out;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+            animation: fadeIn 2s ease-out;
             position: relative;
             z-index: 10;
         }
 
-        h1, h2, p {
+        /* Headings and Text */
+        h1 {
+            font-size: 3em;
             text-transform: uppercase;
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #fff;
             text-shadow: 0 0 10px #ff0000;
-            animation: textGlow 1.5s ease-in-out infinite alternate;
+            color: #fff;
+            animation: textGlow 1.5s infinite alternate;
+        }
+
+        h2, p {
+            font-size: 1.5em;
+            text-shadow: 0 0 5px #ff0000;
         }
 
         .intro-text {
             font-size: 1.2em;
             font-weight: normal;
-            text-shadow: 0 0 10px white, 0 0 20px white;
+            margin-top: 10px;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .profile-img {
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            border: 3px solid #ff0000;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease-in-out;
+            border: 5px solid #ff0000;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out, border-color 0.3s;
         }
 
         .profile-img:hover {
@@ -124,27 +122,33 @@
             border-color: #fff;
         }
 
+        /* Skills and Connections */
+        .section {
+            margin-top: 30px;
+        }
+
         .inline-details {
             display: flex;
             justify-content: center;
             gap: 30px;
             font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .section ul {
             list-style: none;
             padding: 0;
+            margin-top: 10px;
         }
 
         .section ul li {
             background: rgba(255, 255, 255, 0.1);
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
-            border-radius: 6px;
+            border-radius: 8px;
             font-size: 1.1em;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px white, 0 0 20px #ff0000;
-            animation: textGlow 1s ease-in-out infinite alternate;
+            text-shadow: 0 0 10px #ff5733;
+            animation: textGlow 1s infinite alternate;
         }
 
         a {
@@ -157,27 +161,10 @@
             color: #ff0000;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes textGlow {
-            0%, 100% {
-                text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-            }
-            50% {
-                text-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000;
-            }
-        }
-
+        /* Responsive Styles */
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 20px;
             }
 
             .inline-details {
@@ -186,48 +173,76 @@
                 gap: 20px;
             }
 
-            h1, h2 {
-                font-size: 2em;
+            h1 {
+                font-size: 2.5em;
             }
 
             .intro-text {
                 font-size: 1em;
             }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
         }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px #ff5733, 0 0 40px #ff5733;
+            }
+            50% {
+                text-shadow: 0 0 40px #ff5733, 0 0 60px #ff5733;
+            }
+        }
+
+        @keyframes backgroundGlow {
+            0%, 100% {
+                background-color: #000;
+            }
+            50% {
+                background-color: #111;
+            }
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- Network of dots and lines -->
+    <!-- Animated Network of Dots and Lines -->
     <div class="network"></div>
 
+    <!-- Main Content Container -->
     <div class="container">
         <h1>ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ</h1>
         <img class="profile-img" src="https://i.ibb.co/wJvHNDK/file-3042.jpg" alt="Profile">
         <p class="intro-text">ᴅᴏɴ'ᴛ ᴄʀʏ. ᴅᴏɴ'ᴛ ᴅᴇꜱᴘᴀɪʀ. ɴᴏᴡ'ꜱ ɴᴏᴛ ᴛʜᴇ ᴛɪᴍᴇ ꜰᴏʀ ᴛʜᴀᴛ !</p>
-        
+
         <div class="inline-details">
             <div>ᴀɢᴇ: 18</div><div>ʟᴏᴄᴀᴛɪᴏɴ: ᴅᴇʟʜɪ </div>
         </div>
 
         <div class="section">
-            <h2>ꜱᴋɪʟʟꜱ </h2>
+            <h2>ꜱᴋɪʟʟꜱ</h2>
             <ul>
                 <li>• Css | Hᴛᴍʟ | JᴧᴠᴧSᴄʀɪᴘᴛ | Pʏᴛʜᴏɴ •</li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>ᴄᴏɴɴᴇᴄᴛ ᴡɪᴛʜ ᴍᴇ </h2>
+            <h2>ᴄᴏɴɴᴇᴄᴛ ᴡɪᴛʜ ᴍᴇ</h2>
             <ul>
                 <li><a href="https://t.me/itz_sandeep_shrma" target="_blank">ᴛᴇʟᴇɢʀᴀᴍ</a></li>
                 <li><a href="https://t.me/Japanese_Userbot" target="_blank">ᴄʜᴀɴɴᴇʟ</a></li>
                 <li><a href="https://t.me/Japanese_Userbot_Support" target="_blank">ɢʀᴏᴜᴘ</a></li>
                 <li><a href="https://github.com/itzsandeepshrma" target="_blank">ɢɪᴛʜᴜʙ</a></li>
-                <li><a href="https://github.com/Team-Japanese" target="_blank">ᴛᴇᴀᴍ ᴊᴀᴘᴀɴᴇꜱᴇ</a></li>
-                <li><a href="https://github.com/Team-Japanese/Japanese-X-UB" target="_blank">ᴜꜱᴇʀʙᴏᴛ</a></li>
                 <li><a href="https://www.instagram.com/itz_sandeep_shrma" target="_blank">ɪɴꜱᴛᴀɢʀᴀᴍ</a></li>
-                <li><a href="https://t.me/Japanese_Userbot/53" target="_blank">ᴛᴇʟᴇɢʀᴀᴍ ʙᴏᴛ ʟɪꜱᴛ</a></li>
             </ul>
         </div>
     </div>
@@ -235,13 +250,12 @@
     <script>
         // Add random dots and lines to the background dynamically
         const network = document.querySelector('.network');
-        const numDots = 30; // Number of dots to generate
+        const numDots = 30;
 
         function randomPosition() {
             return Math.random() * 100 + '%';
         }
 
-        // Create dots and append them
         for (let i = 0; i < numDots; i++) {
             const dot = document.createElement('div');
             dot.classList.add('dot');
@@ -250,7 +264,6 @@
             network.appendChild(dot);
         }
 
-        // Create lines between dots
         const dots = document.querySelectorAll('.network .dot');
         dots.forEach((dot1, index1) => {
             dots.forEach((dot2, index2) => {
