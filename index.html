@@ -22,6 +22,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            flex-direction: column;
         }
 
         /* Background Overlay */
@@ -203,6 +204,27 @@
             text-shadow: 0 0 10px #ff5733;
         }
 
+        /* Footer (Copyright) */
+        footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1em;
+            z-index: 3;
+        }
+
+        footer a {
+            color: #ff5733;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: #ff0000;
+        }
+
         /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
@@ -297,6 +319,11 @@
         </div>
     </div>
 
+    <!-- Footer with Copyright -->
+    <footer>
+        <p>&copy; 𝟤𝟢𝟤𝟦 ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ. ᴀʟʟ ʀɪɢʜᴛꜱ ʀᴇꜱᴇʀᴠᴇᴅ.</p>
+    </footer>
+
     <script>
         // Add random dots and lines to the background dynamically
         const network = document.querySelector('.network');
@@ -347,4 +374,4 @@
     </script>
 
 </body>
-        </html>
+</html>
