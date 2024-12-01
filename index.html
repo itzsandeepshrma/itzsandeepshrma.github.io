@@ -376,9 +376,14 @@
         }
         // Ensure the audio plays automatically using JavaScript
         window.addEventListener('load', function() {
-            var audio = document.getElementById('mySong');
-            audio.play(); // Play the audio
+        var audio = document.getElementById('mySong');
+        
+        // Try to play the audio on page load
+        audio.play().catch(function(error) {
+            // If autoplay is blocked, log the error (optional)
+            console.log("Audio autoplay failed:", error);
         });
+    });
     </script>
 
 </body>
