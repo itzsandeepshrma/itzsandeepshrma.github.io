@@ -298,9 +298,6 @@
 
         <div class="inline-details">
             <div>ᴀɢᴇ: 18</div><div>ʟᴏᴄᴀᴛɪᴏɴ: ᴅᴇʟʜɪ</div>
-            <audio id="mySong" autoplay loop preload="auto">
-                <source src="audio/music.mp3" type="audio/mpeg">
-            </audio>
         </div>
 
         <div class="section">
@@ -374,16 +371,6 @@
             line.style.left = x1 + 'px';
             line.style.top = y1 + 'px';
         }
-        // Ensure the audio plays automatically using JavaScript
-        window.addEventListener('load', function() {
-        var audio = document.getElementById('mySong');
-        
-        // Try to play the audio on page load
-        audio.play().catch(function(error) {
-            // If autoplay is blocked, log the error (optional)
-            console.log("Audio autoplay failed:", error);
-        });
-    });
     </script>
 
 </body>
