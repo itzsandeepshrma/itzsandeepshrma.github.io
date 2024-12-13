@@ -36,243 +36,8 @@
             z-index: 1;
         }
 
-        /* Animated Network of Dots and Lines */
-        .network {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
+        /* Other styles remain the same... */
 
-        .network .dot {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 50%;
-            animation: dotAnimation 6s infinite;
-        }
-
-        .network .line {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            background-color: rgba(255, 255, 255, 0.5);
-            animation: lineAnimation 6s infinite;
-        }
-
-        @keyframes dotAnimation {
-            0%, 100% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            50% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes lineAnimation {
-            0%, 100% {
-                width: 1px;
-                height: 1px;
-                opacity: 0.2;
-            }
-            50% {
-                width: 150px;
-                height: 1px;
-                opacity: 0.6;
-            }
-        }
-
-        /* Sakura Petals Animation */
-        .petal {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: #ff66b2; /* Sakura pink color */
-            border-radius: 50%;
-            animation: petalAnimation 10s linear infinite;
-            pointer-events: none;
-        }
-
-        @keyframes petalAnimation {
-            0% {
-                transform: translateY(-10%) rotate(0deg);
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Main Container */
-        .container {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 600px;
-            animation: fadeIn 2s ease-out;
-        }
-
-        /* Glowing Text Effect for All Text */
-        h1, h2, p, .intro-text, .inline-details div, .section ul li, a {
-            text-shadow: 0 0 5px #ff5733, 0 0 10px #ff5733, 0 0 15px #ff5733, 0 0 20px #ff5733;
-            color: #fff;
-            transition: color 0.3s ease-in-out;
-        }
-
-        /* Glowing Header */
-        h1 {
-            font-size: 3em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            animation: textGlow 1.5s infinite alternate;
-        }
-
-        /* Glowing Paragraph */
-        p {
-            font-size: 1.2em;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-        }
-
-        /* Glowing Links */
-        a {
-            color: #ff5733;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        a:hover {
-            color: #ff0000;
-        }
-
-        .intro-text {
-            font-size: 1.2em;
-            font-weight: normal;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #ff0000;
-            margin-top: 20px;
-            transition: transform 0.3s ease-in-out, border-color 0.3s;
-        }
-
-        .profile-img:hover {
-            transform: scale(1.1);
-            border-color: #fff;
-        }
-
-        .section {
-            margin-top: 30px;
-        }
-
-        .inline-details {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            font-size: 1.2em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .section ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
-
-        .section ul li {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-            font-size: 1.1em;
-            text-shadow: 0 0 10px #ff5733;
-        }
-
-        /* Footer (Copyright) */
-        footer {
-            position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1em;
-            z-index: 3;
-        }
-
-        footer a {
-            color: #ff5733;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        footer a:hover {
-            color: #ff0000;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes textGlow {
-            0%, 100% {
-                text-shadow: 0 0 20px #ff5733, 0 0 40px #ff5733, 0 0 60px #ff5733;
-            }
-            50% {
-                text-shadow: 0 0 40px #ff5733, 0 0 60px #ff5733, 0 0 80px #ff5733;
-            }
-        }
-
-        /* Connect with Me Section Text Glow */
-        .section a {
-            color: white; /* Change text color to white */
-            text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000, 0 0 15px #ff0000; /* Red Glow */
-            font-size: 1.2em;
-        }
-
-        .section a:hover {
-            color: #ff0000; /* Hover effect to red */
-            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000; /* Enhanced glow on hover */
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            .inline-details {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-
-            h1 {
-                font-size: 2.5em;
-            }
-
-            .profile-img {
-                width: 120px;
-                height: 120px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -290,10 +55,16 @@
     <div class="petal" style="top: 70%; left: 10%; animation-duration: 7s;"></div>
     <div class="petal" style="top: 80%; left: 60%; animation-duration: 11s;"></div>
 
+    <!-- Add Audio Player (Autoplay) -->
+    <audio autoplay loop>
+        <source src="audio/music.mp3 type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- Main Content Container -->
     <div class="container">
         <h1>ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ</h1>
-        <img class="profile-img" src="https://i.ibb.co/WyjYZsX/file-3785.jpg" alt="Profile">
+        <img class="profile-img" src="https://i.ibb.co/8gd7Nnc/file-4855.jpg" alt="Profile">
         <p class="intro-text">ᴛɪᴍᴇ ᴛᴏ ʀɪꜱᴇ ᴀꜱ ᴍᴜᴢᴀɴ ᴋɪʙᴜᴛꜱᴜᴊɪ, ᴛʀᴜᴇ ᴋɪɴɢ ᴏꜰ ᴅᴇᴍᴏɴꜱ !</p>
 
         <div class="inline-details">
@@ -321,7 +92,7 @@
 
     <!-- Footer with Copyright -->
     <footer>
-        <p>&copy; 𝟤𝟢𝟤𝟦 ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ. ᴀʟʟ ʀɪɢʜᴛꜱ ʀᴇꜱᴇʀᴠᴇᴅ.</p>
+        <p>&copy; 𝟤𝟢𝟤𝟜 ꜱᴀɴᴅᴇᴇᴘ ꜱʜᴀʀᴍᴀ. ᴀʟʟ ʀɪɢʜᴛꜱ ʀᴇꜱᴇʀᴠᴇᴅ.</p>
     </footer>
 
     <script>
