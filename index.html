@@ -318,17 +318,19 @@
             </ul>
         </div>
     </div>
-   <!-- Invisible Audio Player with Autoplay (Muted to bypass autoplay restrictions) -->
+   <!-- Invisible Audio Player (Muted to bypass autoplay restrictions) -->
     <audio id="background-audio" autoplay loop muted>
         <source src="audio/music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
     <script>
-        // Unmute the audio after it's loaded (works around autoplay restrictions)
+        // Wait for the audio to be ready and then unmute it
         const audio = document.getElementById('background-audio');
-        audio.oncanplaythrough = () => {
-            audio.muted = false;  // Unmute audio once it's ready to play
+
+        // Check if the audio is playing and unmute it
+        audio.onplay = function() {
+            audio.muted = false;  // Unmute audio once it's playing
         };
     </script>
 
