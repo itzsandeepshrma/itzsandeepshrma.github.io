@@ -316,24 +316,59 @@
             </ul>
         </div>
     </div>
-   <!-- Invisible Audio Player (Muted to bypass autoplay restrictions) -->
-    <audio id="background-audio" autoplay loop muted>
+<style> 
+        /* Add styles for the play button */
+        #play-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #ff5733;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            z-index: 100; /* Ensure it stays above all elements */
+            box-shadow: 0 0 10px rgba(255, 87, 51, 0.8);
+            transition: background 0.3s ease;
+        }
+
+        #play-button:hover {
+            background: #ff0000;
+        }
+    </style>
+
+    <!-- Add your existing content -->
+
+    <!-- Audio Player -->
+    <audio id="background-audio" loop>
         <source src="audio/music.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 
+    <!-- Play Button -->
+    <button id="play-button">Play Music</button>
+
     <script>
-        // Wait for the audio to be ready and then unmute it
         const audio = document.getElementById('background-audio');
+        const playButton = document.getElementById('play-button');
 
-        // Check if the audio is playing and unmute it
-        audio.onplay = function() {
-            audio.muted = false;  // Unmute audio once it's playing
-        };
+        playButton.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play()
+                    .then(() => {
+                        playButton.textContent = "Playing..."; // Update button text
+                        playButton.style.background = "#00b300"; // Change to green
+                        setTimeout(() => playButton.style.display = 'none', 2000); // Hide after 2 seconds
+                    })
+                    .catch((error) => {
+                        console.error("Error playing audio:", error);
+                    });
+            }
+        });
     </script>
-
-</body>
-</html>
+    
     
     <!-- Footer with Copyright -->
     <footer>
