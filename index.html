@@ -8,89 +8,8 @@
   <link rel="shortcut icon" href="img/sandeep.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
-    /* MUZAN STYLE LOADER */
-#loader {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
-  animation: bgPulse 6s infinite ease-in-out;
-  overflow: hidden;
-}
-
-@keyframes bgPulse {
-  0%, 100% { background: radial-gradient(circle at center, #1a0000 0%, #000 100%); }
-  50% { background: radial-gradient(circle at center, #330000 0%, #000 100%); }
-}
-
-.kanji {
-  font-size: 5rem;
-  color: #e60000;
-  text-shadow: 0 0 20px #ff0000, 0 0 40px #600000;
-  animation: glitch 3s ease-in-out forwards, glowPulse 2s infinite alternate;
-  position: relative;
-  z-index: 2;
-}
-
-@keyframes glitch {
-  0% { transform: scale(0.8); opacity: 0; }
-  50% { transform: scale(1.2) rotate(1deg); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-@keyframes glowPulse {
-  0% { text-shadow: 0 0 10px #ff0000; }
-  100% { text-shadow: 0 0 30px #ff3333, 0 0 60px #660000; }
-}
-
-.slash {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background: linear-gradient(to right, #ff0000, #660000, #ff0000);
-  top: 50%;
-  transform: scaleX(0);
-  animation: slashAnim 1s ease-in-out 2s forwards;
-  z-index: 1;
-  filter: blur(1px);
-}
-
-@keyframes slashAnim {
-  0% { transform: scaleX(0); opacity: 1; }
-  50% { transform: scaleX(1.5); opacity: 1; }
-  100% { transform: scaleX(1); opacity: 0; }
-}
-
-.blood-orbs {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  z-index: 1;
-}
-
-.orb {
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  background: #e60000;
-  border-radius: 50%;
-  box-shadow: 0 0 20px #ff0000;
-  animation: float 8s infinite ease-in-out;
-  opacity: 0.2;
-}
-
-@keyframes float {
-  0% { transform: translateY(100vh) scale(0.5); opacity: 0.2; }
-  50% { transform: translateY(-50vh) scale(1.2); opacity: 0.6; }
-  100% { transform: translateY(-120vh) scale(0.4); opacity: 0; }
-  }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: 'Roboto', sans-serif;
       background: #0b0b0b;
@@ -103,35 +22,102 @@
       justify-content: center;
       position: relative;
     }
-    canvas.network {
+
+    /* Loader */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: bgPulse 6s infinite ease-in-out;
+    }
+
+    @keyframes bgPulse {
+      0%, 100% { background: radial-gradient(circle at center, #1a0000 0%, #000 100%); }
+      50% { background: radial-gradient(circle at center, #330000 0%, #000 100%); }
+    }
+
+    .kanji {
+      font-size: 4rem;
+      color: #e60000;
+      text-shadow: 0 0 20px #ff0000, 0 0 40px #600000;
+      animation: glitch 2s ease-in-out, glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glitch {
+      0% { transform: scale(0.9); opacity: 0; }
+      50% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 10px #ff0000; }
+      100% { text-shadow: 0 0 30px #ff3333, 0 0 60px #660000; }
+    }
+
+    .slash {
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, #ff0000, #660000, #ff0000);
+      animation: slashAnim 1s ease-in-out 2s forwards;
+      filter: blur(1px);
+      margin: 10px 0;
+    }
+
+    @keyframes slashAnim {
+      0% { transform: scaleX(0); opacity: 1; }
+      50% { transform: scaleX(1.5); opacity: 1; }
+      100% { transform: scaleX(1); opacity: 0; }
+    }
+
+    .blood-orbs {
       position: absolute;
-      top: 0; left: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;
-    }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
+      overflow: hidden;
       z-index: 1;
     }
+
+    .orb {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: #e60000;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #ff0000;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.2;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 0.2; }
+      50% { transform: translateY(-50vh) scale(1.2); opacity: 0.6; }
+      100% { transform: translateY(-120vh) scale(0.4); opacity: 0; }
+    }
+
+    /* Main Content */
     .container {
       z-index: 2;
       text-align: center;
-      background: rgba(20, 20, 20, 0.8);
       padding: 40px;
       border-radius: 16px;
       box-shadow: 0 0 30px rgba(255, 87, 51, 0.4);
       width: 90%;
       max-width: 600px;
       animation: fadeIn 1.2s ease-in-out;
+      background: rgba(20, 20, 20, 0.8);
     }
+
     h1 {
       font-size: 2.8em;
       margin-bottom: 15px;
       text-shadow: 0 0 20px #ff5733;
     }
+
     .profile-img {
       width: 130px;
       height: 130px;
@@ -140,15 +126,18 @@
       margin: 10px 0 20px;
       transition: 0.4s ease;
     }
+
     .profile-img:hover {
       transform: scale(1.05);
       border-color: #fff;
     }
+
     p {
       margin-bottom: 10px;
       font-size: 1.1em;
       color: rgba(255, 255, 255, 0.9);
     }
+
     .inline-details {
       display: flex;
       justify-content: center;
@@ -156,9 +145,7 @@
       margin: 15px 0;
       font-weight: 500;
     }
-    .badges {
-      margin-top: 10px;
-    }
+
     .badge {
       background: #222;
       color: #fff;
@@ -169,19 +156,23 @@
       font-size: 0.9em;
       border: 1px solid #444;
     }
+
     .social-links {
       margin-top: 20px;
     }
+
     .social-links a {
       margin: 0 10px;
       color: #ff5733;
       font-size: 1.5em;
       transition: all 0.3s ease;
     }
+
     .social-links a:hover {
       color: #ff0000;
       transform: scale(1.2);
     }
+
     #play-button {
       position: fixed;
       bottom: 20px;
@@ -197,30 +188,42 @@
       box-shadow: 0 0 15px rgba(255, 87, 51, 0.8);
       transition: all 0.4s ease-in-out;
     }
+
     #play-button:hover {
       background: #ff0000;
       box-shadow: 0 0 25px rgba(255, 0, 0, 0.9);
     }
+
     footer {
       position: absolute;
       bottom: 10px;
       font-size: 0.9em;
-      z-index: 3;
       color: rgba(255,255,255,0.6);
     }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fall {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(100vh); }
-    }
   </style>
 </head>
 <body>
-  <canvas class="network"></canvas>
-  <div class="overlay"></div>
+
+  <!-- Loader -->
+  <div id="loader">
+    <div class="kanji">サンディープ</div>
+    <div class="slash"></div>
+    <div class="blood-orbs">
+      <div class="orb" style="left: 10%; animation-delay: 0s;"></div>
+      <div class="orb" style="left: 25%; animation-delay: 1.2s;"></div>
+      <div class="orb" style="left: 40%; animation-delay: 0.8s;"></div>
+      <div class="orb" style="left: 60%; animation-delay: 1.6s;"></div>
+      <div class="orb" style="left: 75%; animation-delay: 0.4s;"></div>
+      <div class="orb" style="left: 90%; animation-delay: 1.8s;"></div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
   <div class="container">
     <h1>sᴧɴᴅᴇᴇᴘ sʜᴧʀᴍᴧ</h1>
     <img class="profile-img" src="img/sandeep.png" alt="Profile Image">
@@ -229,60 +232,49 @@
       <span>ᴧɢᴇ: 𝟣𝟫</span>
       <span>ʟᴏᴄᴧᴛɪᴏɴ: ᴅᴇʟʜɪ</span>
     </div>
-    <div id="loader">
-  <div class="kanji">サンディープ</div>
-  <div class="slash"></div>
-  <div class="blood-orbs">
-    <div class="orb" style="left: 10%; animation-delay: 0s;"></div>
-    <div class="orb" style="left: 25%; animation-delay: 1.2s;"></div>
-    <div class="orb" style="left: 40%; animation-delay: 0.8s;"></div>
-    <div class="orb" style="left: 60%; animation-delay: 1.6s;"></div>
-    <div class="orb" style="left: 75%; animation-delay: 0.4s;"></div>
-    <div class="orb" style="left: 90%; animation-delay: 1.8s;"></div>
-  </div>
-    </div>
     <div class="badges">
       <span class="badge"><i class="fab fa-python"></i> ᴘʏᴛʜᴏɴ</span>
       <span class="badge"><i class="fab fa-html5"></i> ʜᴛᴍʟ</span>
       <span class="badge"><i class="fab fa-css3-alt"></i> ᴄꜱꜱ</span>
-      <span class="badge"><i class="fab fa-js"></i> ᴊᴧᴠᴧꜱᴄʀɪᴘᴛ</span>
+      <span class="badge"><i class="fab fa-js"></i> ᴊꜱ</span>
     </div>
     <div class="social-links">
-        <a href="https://github.com/itzsandeepshrma" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="https://instagram.com/itz_sandeep_shrma" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.threads.net/@itz_sandeep_shrma" target="_blank" class="social-icon"><i class="fab fa-threads"></i></a>
-        <a href="https://t.me/itz_sandeep_shrma" target="_blank" class="social-icon"><i class="fab fa-telegram"></i></a>
-        <a href="https://x.com/itz_sandeep_sh" target="_blank" class="social-icon"><i class="fab fa-x-twitter"></i></a>
-      
+      <a href="https://github.com/itzsandeepshrma" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://instagram.com/itz_sandeep_shrma" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.threads.net/@itz_sandeep_shrma" target="_blank"><i class="fab fa-threads"></i></a>
+      <a href="https://t.me/itz_sandeep_shrma" target="_blank"><i class="fab fa-telegram"></i></a>
+      <a href="https://x.com/itz_sandeep_sh" target="_blank"><i class="fab fa-x-twitter"></i></a>
     </div>
   </div>
-  <footer>© 𝟤𝟢𝟤𝟧 sᴧɴᴅᴇᴇᴘ sʜᴧʀᴍᴧ ᴧʟʟ ʀɪɢʜᴛs ʀᴇsᴇʀᴠᴇᴅ</footer>
+
+  <footer>© 2025 sᴧɴᴅᴇᴇᴘ sʜᴧʀᴍᴧ • ᴬˡˡ ʀɪɢʜᴛꜱ ʀᴇꜱᴇʀᴠᴇᴅ</footer>
 
   <button id="play-button">▶ ᴘʟᴧʏ ᴍᴜꜱɪᴄ</button>
   <audio id="background-audio" loop>
     <source src="audio/music.mp3" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
-  <script>
-  window.addEventListener("load", () => {
-    const loader = document.getElementById("loader");
 
-    setTimeout(() => {
-      loader.style.transition = "opacity 1s ease";
-      loader.style.opacity = "0";
-      setTimeout(() => {
-        loader.style.display = "none";
-        document.body.style.overflow = "auto";
-      }, 1000);
-    }, 5000); // Loader duration
-  });
-  </script>
   <script>
-    // Music button
-    const audio = document.getElementById('background-audio');
-    const btn = document.getElementById('play-button');
+    // Loader transition
+    window.addEventListener("load", () => {
+      const loader = document.getElementById("loader");
+      setTimeout(() => {
+        loader.style.transition = "opacity 1s ease";
+        loader.style.opacity = "0";
+        setTimeout(() => {
+          loader.style.display = "none";
+          document.body.style.overflow = "auto";
+        }, 1000);
+      }, 5000); // Delay in ms
+    });
+
+    // Music play/pause
+    const audio = document.getElementById("background-audio");
+    const btn = document.getElementById("play-button");
     let isPlaying = false;
-    btn.addEventListener('click', () => {
+
+    btn.addEventListener("click", () => {
       if (isPlaying) {
         audio.pause();
         btn.textContent = '▶ ᴘʟᴧʏ ᴍᴜꜱɪᴄ';
@@ -292,8 +284,7 @@
       }
       isPlaying = !isPlaying;
     });
-
-    // Sakura Petals
+  // Sakura Petals
     for (let i = 0; i < 20; i++) {
       const petal = document.createElement("div");
       petal.classList.add("petal");
@@ -362,6 +353,8 @@
       w = canvas.width = window.innerWidth;
       h = canvas.height = window.innerHeight;
     });
-  </script>
-</body>
+   </script>
+   </script>
+ </body>
+ </body>
 </html>
