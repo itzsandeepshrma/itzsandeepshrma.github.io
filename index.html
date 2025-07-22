@@ -8,6 +8,88 @@
   <link rel="shortcut icon" href="img/sandeep.png" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
+    /* MUZAN STYLE LOADER */
+#loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, #1a0000 0%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+  animation: bgPulse 6s infinite ease-in-out;
+  overflow: hidden;
+}
+
+@keyframes bgPulse {
+  0%, 100% { background: radial-gradient(circle at center, #1a0000 0%, #000 100%); }
+  50% { background: radial-gradient(circle at center, #330000 0%, #000 100%); }
+}
+
+.kanji {
+  font-size: 5rem;
+  color: #e60000;
+  text-shadow: 0 0 20px #ff0000, 0 0 40px #600000;
+  animation: glitch 3s ease-in-out forwards, glowPulse 2s infinite alternate;
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes glitch {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.2) rotate(1deg); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes glowPulse {
+  0% { text-shadow: 0 0 10px #ff0000; }
+  100% { text-shadow: 0 0 30px #ff3333, 0 0 60px #660000; }
+}
+
+.slash {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, #ff0000, #660000, #ff0000);
+  top: 50%;
+  transform: scaleX(0);
+  animation: slashAnim 1s ease-in-out 2s forwards;
+  z-index: 1;
+  filter: blur(1px);
+}
+
+@keyframes slashAnim {
+  0% { transform: scaleX(0); opacity: 1; }
+  50% { transform: scaleX(1.5); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 0; }
+}
+
+.blood-orbs {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.orb {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #e60000;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #ff0000;
+  animation: float 8s infinite ease-in-out;
+  opacity: 0.2;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0.2; }
+  50% { transform: translateY(-50vh) scale(1.2); opacity: 0.6; }
+  100% { transform: translateY(-120vh) scale(0.4); opacity: 0; }
+  }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Roboto', sans-serif;
@@ -147,6 +229,18 @@
       <span>ᴧɢᴇ: 𝟣𝟫</span>
       <span>ʟᴏᴄᴧᴛɪᴏɴ: ᴅᴇʟʜɪ</span>
     </div>
+    <div id="loader">
+  <div class="kanji">サンディープ</div>
+  <div class="slash"></div>
+  <div class="blood-orbs">
+    <div class="orb" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="orb" style="left: 25%; animation-delay: 1.2s;"></div>
+    <div class="orb" style="left: 40%; animation-delay: 0.8s;"></div>
+    <div class="orb" style="left: 60%; animation-delay: 1.6s;"></div>
+    <div class="orb" style="left: 75%; animation-delay: 0.4s;"></div>
+    <div class="orb" style="left: 90%; animation-delay: 1.8s;"></div>
+  </div>
+    </div>
     <div class="badges">
       <span class="badge"><i class="fab fa-python"></i> ᴘʏᴛʜᴏɴ</span>
       <span class="badge"><i class="fab fa-html5"></i> ʜᴛᴍʟ</span>
@@ -169,7 +263,20 @@
     <source src="audio/music.mp3" type="audio/mp3" />
     Your browser does not support the audio element.
   </audio>
+  <script>
+  window.addEventListener("load", () => {
+    const loader = document.getElementById("loader");
 
+    setTimeout(() => {
+      loader.style.transition = "opacity 1s ease";
+      loader.style.opacity = "0";
+      setTimeout(() => {
+        loader.style.display = "none";
+        document.body.style.overflow = "auto";
+      }, 1000);
+    }, 5000); // Loader duration
+  });
+  </script>
   <script>
     // Music button
     const audio = document.getElementById('background-audio');
