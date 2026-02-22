@@ -308,24 +308,7 @@
       }
       isPlaying = !isPlaying;
     });
-  // Sakura Petals
-    for (let i = 0; i < 20; i++) {
-      const petal = document.createElement("div");
-      petal.classList.add("petal");
-      Object.assign(petal.style, {
-        position: "fixed",
-        top: `${Math.random() * -100}px`,
-        left: `${Math.random() * 100}%`,
-        width: "10px",
-        height: "10px",
-        backgroundColor: "#ff66b2",
-        borderRadius: "50%",
-        opacity: "0.8",
-        animation: `fall ${6 + Math.random() * 6}s linear infinite`
-      });
-      document.body.appendChild(petal);
-    }
-
+  
     // Network of Dots and Lines
     const canvas = document.querySelector(".network");
     const ctx = canvas.getContext("2d");
